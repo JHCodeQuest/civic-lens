@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
-  basePath: "/civic-lens",
-  assetPrefix: "/civic-lens",
+  basePath: process.env.NODE_ENV === "production" ? "/civic-lens" : "",
+  assetPrefix: process.env.NODE_ENV === "production" ? "/civic-lens" : "",
   images: {
     unoptimized: true,
   },

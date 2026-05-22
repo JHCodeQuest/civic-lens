@@ -1,6 +1,19 @@
-const sections = [
+"use client"
+
+import { useState } from "react"
+
+type Level = "beginner" | "intermediate" | "detailed"
+
+const levels: { key: Level; label: string }[] = [
+  { key: "beginner", label: "Beginner" },
+  { key: "intermediate", label: "Intermediate" },
+  { key: "detailed", label: "Detailed" },
+]
+
+const sections: { title: string; level: Level; content: React.JSX.Element }[] = [
   {
     title: "The UK Parliament",
+    level: "beginner",
     content: (
       <>
         <p>
@@ -26,6 +39,7 @@ const sections = [
   },
   {
     title: "How General Elections Work",
+    level: "beginner",
     content: (
       <>
         <p>
@@ -43,6 +57,7 @@ const sections = [
   },
   {
     title: "First Past the Post (FPTP)",
+    level: "intermediate",
     content: (
       <>
         <p>
@@ -64,6 +79,7 @@ const sections = [
   },
   {
     title: "Devolution",
+    level: "intermediate",
     content: (
       <>
         <p>
@@ -96,6 +112,7 @@ const sections = [
   },
   {
     title: "The Role of the Monarch",
+    level: "beginner",
     content: (
       <>
         <p>
@@ -118,6 +135,7 @@ const sections = [
   },
   {
     title: "How a Bill Becomes Law",
+    level: "detailed",
     content: (
       <>
         <p>
@@ -152,20 +170,44 @@ const sections = [
   },
 ]
 
+const levelOrder: Level[] = ["beginner", "intermediate", "detailed"]
+
 export default function LearnPage() {
+  const [selected, setSelected] = useState<Level>("beginner")
+
+  const visible = sections.filter(
+    (s) => levelOrder.indexOf(s.level) <= levelOrder.indexOf(selected),
+  )
+
   return (
     <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8">
       <h1 className="mb-2 text-3xl font-bold">Learn About UK Politics</h1>
-      <p className="mb-8 text-gray-600">
+      <p className="mb-6 text-gray-600">
         An educational guide to how the UK political system works — from Parliament and
         elections to devolution and law-making.
       </p>
 
+      <div className="mb-8 flex gap-2">
+        {levels.map(({ key, label }) => (
+          <button
+            key={key}
+            onClick={() => setSelected(key)}
+            className={`rounded-lg border px-4 py-2 text-sm font-medium transition ${
+              selected === key
+                ? "border-gray-900 bg-gray-900 text-white"
+                : "border-gray-300 bg-white text-gray-700 hover:border-gray-500"
+            }`}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
       <div className="space-y-10">
-        {sections.map(({ title, content }) => (
+        {visible.map(({ title, content }) => (
           <section key={title}>
             <h2 className="mb-4 text-2xl font-bold text-gray-900">{title}</h2>
-            <div className="space-y-3 text-gray-700 leading-relaxed">{content}</div>
+            <div className="space-y-3 leading-relaxed text-gray-700">{content}</div>
           </section>
         ))}
       </div>
