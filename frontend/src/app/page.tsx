@@ -116,6 +116,10 @@ export default function Home() {
           <Link href="/glossary" className="text-gray-500 underline-offset-2 hover:underline">
             Glossary
           </Link>
+          <span className="mx-2">&middot;</span>
+          <Link href="/about" className="text-gray-500 underline-offset-2 hover:underline">
+            About
+          </Link>
         </p>
       </footer>
     </>

@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { href: "/learn", label: "Learn" },
   { href: "/parties", label: "Parties" },
   { href: "/glossary", label: "Glossary" },
+  { href: "/about", label: "About" },
 ]
 
 export default function Navbar() {

@@ -61,7 +61,7 @@ export const glossary = [
   },
   {
     term: "Marginal Seat",
-    definition: "A constituency where the winning candidate's majority is small, making it likely to change hands at the next election. Key targets for opposition parties.",
+    definition: "A constituency where the winning candidate's majority is small, making it likely to change hands at the next election. Marginal seats are key targets for opposition parties.",
   },
   {
     term: "Safe Seat",

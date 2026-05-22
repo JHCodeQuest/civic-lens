@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import TermTooltip from "@/components/ui/TermTooltip"
+import PlainEnglish, { PlainEnglishProvider, PlainEnglishToggle } from "@/components/ui/PlainEnglish"
 
 type Level = "beginner" | "intermediate" | "detailed"
 
@@ -18,19 +19,19 @@ const sections: { title: string; level: Level; content: React.JSX.Element }[] = 
     content: (
       <>
         <p>
-          The UK Parliament is the supreme legislative body of the United Kingdom. It is
-          <TermTooltip term="bicameral" definition="Having two chambers — the House of Commons and the House of Lords.">bicameral</TermTooltip>, consisting of two chambers: the House of Commons (elected) and the
+          The UK Parliament is the supreme legislative body of the United Kingdom. It is{" "}
+          <TermTooltip term="bicameral" definition="Having two chambers — the House of Commons and the House of Lords."><PlainEnglish complex="bicameral" simple="two-chamber" /></TermTooltip>, consisting of two chambers: the House of Commons (elected) and the
           House of Lords (appointed). The monarch is the third component, granting <TermTooltip term="Royal Assent" /> to bills.
         </p>
         <h3 className="mb-2 mt-6 text-lg font-semibold">House of Commons</h3>
         <p>
-          650 MPs are elected through the <TermTooltip term="First Past the Post" /> system, each representing a
+          650 MPs are elected through the <TermTooltip term="First Past the Post" /> system, each representing a{" "}
           <TermTooltip term="constituency" definition="A geographical area represented by an MP in Parliament.">constituency</TermTooltip>. The party with the most seats typically forms the government, with
           its leader becoming Prime Minister.
         </p>
         <h3 className="mb-2 mt-6 text-lg font-semibold">House of Lords</h3>
         <p>
-          The upper chamber scrutinises legislation proposed by the Commons. It includes
+          The upper chamber <PlainEnglish complex="scrutinises" simple="carefully examines" /> legislation proposed by the Commons. It includes
           life peers, hereditary peers, and Lords Spiritual. The Lords can amend and delay
           bills but cannot permanently block them.
         </p>
@@ -49,8 +50,8 @@ const sections: { title: string; level: Level; content: React.JSX.Element }[] = 
         </p>
         <p className="mt-4">
           After the election, the monarch invites the leader of the largest party to form a
-          government. If no party wins a majority, a <TermTooltip term="Hung Parliament" /> occurs, potentially
-          leading to a <TermTooltip term="Coalition Government">coalition</TermTooltip> or <TermTooltip term="Minority Government">minority government</TermTooltip>.
+          government. If no party wins a majority, a <TermTooltip term="Hung Parliament"><PlainEnglish complex="hung parliament" simple="situation where no party wins overall control" /></TermTooltip> occurs, potentially
+          leading to a <TermTooltip term="Coalition Government"><PlainEnglish complex="coalition" simple="government made of two or more parties" /></TermTooltip> or <TermTooltip term="Minority Government"><PlainEnglish complex="minority government" simple="government that governs without a majority" /></TermTooltip>.
         </p>
       </>
     ),
@@ -83,7 +84,7 @@ const sections: { title: string; level: Level; content: React.JSX.Element }[] = 
     content: (
       <>
         <p>
-          Since 1997, legislative powers have been <TermTooltip term="Devolution">devolved</TermTooltip> to Scotland, Wales, and
+          Since 1997, legislative powers have been <TermTooltip term="Devolution"><PlainEnglish complex="devolved" simple="transferred" /></TermTooltip> to Scotland, Wales, and
           Northern Ireland. Each nation has its own legislature and government handling
           domestic policy areas such as health, education, and transport.
         </p>
@@ -103,7 +104,7 @@ const sections: { title: string; level: Level; content: React.JSX.Element }[] = 
         </ul>
         <p className="mt-4">
           The UK Parliament at Westminster retains control over reserved matters: defence,
-          foreign affairs, immigration, and overall economic policy. This is known as the
+          foreign affairs, immigration, and overall economic policy. This is known as the{" "}
           <TermTooltip term="West Lothian Question" definition="The constitutional anomaly where MPs from Scotland, Wales, and NI can vote on English-only matters but English MPs cannot vote on devolved matters.">West Lothian Question</TermTooltip> — Scottish, Welsh, and NI MPs can vote on English-only
           matters but not vice versa.
         </p>
@@ -127,7 +128,7 @@ const sections: { title: string; level: Level; content: React.JSX.Element }[] = 
         </ul>
         <p className="mt-4">
           By convention, the monarch acts on the advice of government ministers and does
-          not involve themself in political decisions. This principle is known as the
+          not involve themselves in political decisions. This principle is known as the
           monarch remaining politically neutral.
         </p>
       </>
@@ -180,6 +181,7 @@ export default function LearnPage() {
   )
 
   return (
+    <PlainEnglishProvider>
     <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8">
       <h1 className="mb-2 text-3xl font-bold">Learn About UK Politics</h1>
       <p className="mb-6 text-gray-600">
@@ -187,7 +189,7 @@ export default function LearnPage() {
         elections to <TermTooltip term="Devolution" /> and law-making.
       </p>
 
-      <div className="mb-8 flex gap-2">
+      <div className="mb-8 flex flex-wrap gap-2">
         {levels.map(({ key, label }) => (
           <button
             key={key}
@@ -201,6 +203,8 @@ export default function LearnPage() {
             {label}
           </button>
         ))}
+        <span className="mx-2 text-gray-300">|</span>
+        <PlainEnglishToggle />
       </div>
 
       <div className="space-y-10">
@@ -212,5 +216,6 @@ export default function LearnPage() {
         ))}
       </div>
     </main>
+    </PlainEnglishProvider>
   )
 }
