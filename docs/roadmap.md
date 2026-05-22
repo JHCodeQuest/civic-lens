@@ -1,21 +1,26 @@
 # Roadmap
 
-## Phase 1 – Foundation
-- Set up FastAPI backend with election data
-- Build Next.js frontend with basic pages
-- Data ingestion scripts
+## Stage 1
+- [x] Homepage
+- [x] Glossary
+- [x] Party pages
+- [x] Navbar with active route
+- [x] Mobile responsive layout
+- [x] Tailwind CSS styling
+- [x] GitHub Pages deployment
 
-## Phase 2 – Analysis
-- Polling data integration
-- Swing and turnout analysis notebooks
-- Prediction model prototypes
+## Stage 2
+- [ ] Polling charts
+- [ ] Constituency explorer
+- [ ] Election history
+- [ ] Party detail pages
+- [ ] Backend API integration
+- [ ] Search across all pages
 
-## Phase 3 – Visualisation
-- Interactive charts (swing map, turnout heatmap)
-- Constituency explorer
-- Prediction confidence UI
-
-## Phase 4 – Polish
-- Accessibility pass
-- Performance optimisation
-- Deployment configs
+## Stage 3
+- [ ] Prediction engine
+- [ ] Swing calculator
+- [ ] Data analysis dashboards
+- [ ] Interactive quizzes
+- [ ] Dark mode
+- [ ] Accessibility audit
