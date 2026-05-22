@@ -1,5 +1,7 @@
 import { parties, regions } from "@/data/parties"
 import PartyCard from "@/components/politics/PartyCard"
+import PartyScroll from "@/components/politics/PartyScroll"
+import { slugify } from "@/lib/utils"
 
 export default function PartiesPage() {
   const grouped = regions.map((region) => ({
@@ -9,6 +11,7 @@ export default function PartiesPage() {
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
+      <PartyScroll />
       <h1 className="mb-2 text-3xl font-bold">UK Political Parties</h1>
       <p className="mb-6 text-gray-600">
         An overview of the main political parties across the United Kingdom, including
@@ -40,7 +43,9 @@ export default function PartiesPage() {
             </h2>
             <div className="grid gap-4 sm:grid-cols-2">
               {items.map((party) => (
-                <PartyCard key={party.name} {...party} />
+                <div key={party.name} id={slugify(party.name)}>
+                  <PartyCard {...party} />
+                </div>
               ))}
             </div>
           </section>

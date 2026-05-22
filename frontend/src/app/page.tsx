@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { PARTY_COLORS } from "@/lib/constants"
+import { slugify } from "@/lib/utils"
 
 const featuredParties = [
   { name: "Labour", color: PARTY_COLORS.Labour },
@@ -64,7 +65,7 @@ export default function Home() {
           {featuredParties.map(({ name, color }) => (
             <Link
               key={name}
-              href="/parties"
+              href={`/parties#${slugify(name)}`}
               className="flex items-center gap-3 rounded-sm border border-govuk-border bg-white px-4 py-3 no-underline text-govuk-black transition hover:border-govuk-blue"
             >
               <span
