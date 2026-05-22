@@ -17,8 +17,8 @@ export default function Navbar() {
   const pathname = usePathname()
 
   return (
-    <nav className="flex h-14 items-center justify-between bg-gray-900 px-6 text-white">
-      <Link href="/" className="text-lg font-bold text-white no-underline">
+    <nav className="flex h-14 items-center justify-between border-b border-govuk-border bg-white px-6">
+      <Link href="/" className="text-lg font-bold text-govuk-black no-underline">
         {SITE_NAME}
       </Link>
 
@@ -28,8 +28,8 @@ export default function Navbar() {
             <Link
               href={href}
               className={cn(
-                "text-sm text-gray-400 no-underline transition-colors hover:text-white",
-                pathname === href && "font-semibold text-white",
+                "text-sm text-govuk-blue no-underline underline-offset-4 transition-colors hover:underline",
+                pathname === href && "font-semibold underline",
               )}
             >
               {label}

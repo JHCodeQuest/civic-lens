@@ -9,8 +9,8 @@ interface PartyCardProps {
 
 export default function PartyCard({ name, leader, ideology, description }: PartyCardProps) {
   return (
-    <div className="rounded-lg border border-gray-200 p-5 transition hover:border-gray-900 hover:shadow-md">
-      <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold">
+    <div className="rounded-sm border border-govuk-border bg-white p-5 transition hover:border-govuk-blue">
+      <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold text-govuk-black">
         <span
           className="inline-block h-3 w-3 shrink-0 rounded-full"
           style={{ backgroundColor: PARTY_COLORS[name] ?? "#999" }}

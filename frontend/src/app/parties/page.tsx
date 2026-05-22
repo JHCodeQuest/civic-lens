@@ -20,7 +20,7 @@ export default function PartiesPage() {
           <a
             key={region}
             href={`#${region}`}
-            className="mr-4 text-sm text-blue-600 hover:underline"
+            className="mr-4 text-sm text-govuk-blue hover:underline"
           >
             {region}
           </a>
@@ -32,7 +32,7 @@ export default function PartiesPage() {
           <section key={region}>
             <h2
               id={region}
-              className="mb-4 mt-8 scroll-mt-20 text-2xl font-bold text-gray-900 first:mt-0"
+              className="mb-4 mt-8 scroll-mt-20 text-2xl font-bold text-govuk-black first:mt-0"
             >
               <a href={`#${region}`} className="text-inherit no-underline">
                 {region}

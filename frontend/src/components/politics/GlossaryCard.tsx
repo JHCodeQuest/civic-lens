@@ -5,8 +5,8 @@ interface GlossaryCardProps {
 
 export default function GlossaryCard({ term, definition }: GlossaryCardProps) {
   return (
-    <div className="rounded-lg border border-gray-200 p-5 transition hover:border-gray-900 hover:shadow-md">
-      <h3 className="mb-2 text-base font-semibold">{term}</h3>
+    <div className="rounded-sm border border-govuk-border bg-white p-5 transition hover:border-govuk-blue">
+      <h3 className="mb-2 text-base font-semibold text-govuk-black">{term}</h3>
       <p className="text-sm leading-relaxed text-gray-700">{definition}</p>
     </div>
   )

@@ -26,7 +26,7 @@ export default function GlossaryPage() {
         placeholder="Search terms..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="mb-6 w-full max-w-md rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-gray-500 focus:outline-none"
+        className="mb-6 w-full max-w-md rounded-sm border-2 border-govuk-border px-3 py-2 text-sm focus:border-govuk-black focus:outline-none"
       />
 
       <div className="grid gap-4">
