@@ -61,3 +61,7 @@ Contributions are welcome. Open an issue or pull request on [GitHub](https://git
 3. Commit your changes (`git commit -m "Add my feature"`)
 4. Push to your branch (`git push origin feature/my-feature`)
 5. Open a pull request
+
+## License
+
+[MIT](LICENSE)
