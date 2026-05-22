@@ -1,5 +1,5 @@
-import { PARTY_COLORS } from "@/lib/constants"
 import { parties, regions } from "@/data/parties"
+import PartyCard from "@/components/politics/PartyCard"
 
 export default function PartiesPage() {
   const grouped = regions.map((region) => ({
@@ -31,27 +31,7 @@ export default function PartiesPage() {
             </a>
           </h2>
           {items.map((party) => (
-            <div key={party.name}>
-              <h3>
-                <span
-                  style={{
-                    display: "inline-block",
-                    width: 12,
-                    height: 12,
-                    borderRadius: "50%",
-                    backgroundColor: PARTY_COLORS[party.name] ?? "#999",
-                    marginRight: 8,
-                    verticalAlign: "middle",
-                  }}
-                />
-                {party.name}
-              </h3>
-              <p>
-                <strong>Leader:</strong> {party.leader} &middot;{" "}
-                <strong>Ideology:</strong> {party.ideology}
-              </p>
-              <p>{party.description}</p>
-            </div>
+            <PartyCard key={party.name} {...party} />
           ))}
         </section>
       ))}
