@@ -9,13 +9,13 @@ const sections = [
           House of Lords (appointed). The monarch is the third component, granting Royal
           Assent to bills.
         </p>
-        <h3>House of Commons</h3>
+        <h3 className="mb-2 mt-6 text-lg font-semibold">House of Commons</h3>
         <p>
           650 MPs are elected through the First Past the Post system, each representing a
           constituency. The party with the most seats typically forms the government, with
           its leader becoming Prime Minister.
         </p>
-        <h3>House of Lords</h3>
+        <h3 className="mb-2 mt-6 text-lg font-semibold">House of Lords</h3>
         <p>
           The upper chamber scrutinises legislation proposed by the Commons. It includes
           life peers, hereditary peers, and Lords Spiritual. The Lords can amend and delay
@@ -33,7 +33,7 @@ const sections = [
           650 constituencies, each electing one MP. Voters mark an X next to their preferred
           candidate, and the candidate with the most votes wins (First Past the Post).
         </p>
-        <p>
+        <p className="mt-4">
           After the election, the monarch invites the leader of the largest party to form a
           government. If no party wins a majority, a hung parliament occurs, potentially
           leading to a coalition or minority government.
@@ -48,13 +48,13 @@ const sections = [
         <p>
           FPTP is the electoral system used for UK general elections. Key characteristics:
         </p>
-        <ul>
+        <ul className="mt-2 list-inside list-disc space-y-1 text-gray-700">
           <li>Each voter has one vote in their local constituency</li>
           <li>The candidate with the most votes wins, regardless of vote share</li>
           <li>There is no requirement to win 50% or more of the vote</li>
           <li>Parties can win a majority of seats without a majority of votes nationally</li>
         </ul>
-        <p>
+        <p className="mt-4">
           FPTP tends to produce strong single-party governments but can leave many voters
           unrepresented. Smaller parties like the Greens and Liberal Democrats often win a
           smaller share of seats than their vote share would suggest.
@@ -71,7 +71,7 @@ const sections = [
           Northern Ireland. Each nation has its own legislature and government handling
           domestic policy areas such as health, education, and transport.
         </p>
-        <ul>
+        <ul className="mt-2 list-inside list-disc space-y-1 text-gray-700">
           <li>
             <strong>Scottish Parliament</strong> — Holyrood, Edinburgh. Has wide-ranging
             powers including income tax rates and bands.
@@ -85,7 +85,7 @@ const sections = [
             power-sharing rules between unionist and nationalist parties.
           </li>
         </ul>
-        <p>
+        <p className="mt-4">
           The UK Parliament at Westminster retains control over reserved matters: defence,
           foreign affairs, immigration, and overall economic policy. This is known as the
           West Lothian Question — Scottish, Welsh, and NI MPs can vote on English-only
@@ -102,13 +102,13 @@ const sections = [
           The British monarch (currently King Charles III) is the head of state but
           exercises a largely ceremonial role. Key constitutional functions include:
         </p>
-        <ul>
+        <ul className="mt-2 list-inside list-disc space-y-1 text-gray-700">
           <li>Appointing the Prime Minister (the leader of the largest party)</li>
           <li>Granting Royal Assent to bills (making them law)</li>
           <li>Opening and proroguing Parliament</li>
           <li>Serving as head of the armed forces and the Church of England</li>
         </ul>
-        <p>
+        <p className="mt-4">
           By convention, the monarch acts on the advice of government ministers and does
           not involve themself in political decisions. This principle is known as the
           monarch remaining politically neutral.
@@ -123,7 +123,7 @@ const sections = [
         <p>
           A bill passes through several stages in both Houses before becoming law:
         </p>
-        <ol>
+        <ol className="mt-2 list-inside list-decimal space-y-1 text-gray-700">
           <li>
             <strong>First Reading</strong> — The bill is introduced, no debate.
           </li>
@@ -154,18 +154,18 @@ const sections = [
 
 export default function LearnPage() {
   return (
-    <main>
-      <h1>Learn About UK Politics</h1>
-      <p>
+    <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8">
+      <h1 className="mb-2 text-3xl font-bold">Learn About UK Politics</h1>
+      <p className="mb-8 text-gray-600">
         An educational guide to how the UK political system works — from Parliament and
         elections to devolution and law-making.
       </p>
 
-      <div>
+      <div className="space-y-10">
         {sections.map(({ title, content }) => (
           <section key={title}>
-            <h2>{title}</h2>
-            {content}
+            <h2 className="mb-4 text-2xl font-bold text-gray-900">{title}</h2>
+            <div className="space-y-3 text-gray-700 leading-relaxed">{content}</div>
           </section>
         ))}
       </div>

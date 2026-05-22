@@ -1,5 +1,4 @@
 import { PARTY_COLORS } from "@/lib/constants"
-import styles from "./PartyCard.module.css"
 
 interface PartyCardProps {
   name: string
@@ -10,18 +9,18 @@ interface PartyCardProps {
 
 export default function PartyCard({ name, leader, ideology, description }: PartyCardProps) {
   return (
-    <div className={styles.card}>
-      <h3 className={styles.name}>
+    <div className="rounded-lg border border-gray-200 p-5 transition hover:border-gray-900 hover:shadow-md">
+      <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold">
         <span
-          className={styles.dot}
+          className="inline-block h-3 w-3 shrink-0 rounded-full"
           style={{ backgroundColor: PARTY_COLORS[name] ?? "#999" }}
         />
         {name}
       </h3>
-      <p className={styles.meta}>
+      <p className="mb-2 text-sm text-gray-600">
         <strong>Leader:</strong> {leader} &middot; <strong>Ideology:</strong> {ideology}
       </p>
-      <p className={styles.summary}>{description}</p>
+      <p className="text-sm leading-relaxed text-gray-700">{description}</p>
     </div>
   )
 }

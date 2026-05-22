@@ -4,7 +4,6 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { SITE_NAME } from "@/lib/constants"
 import { cn } from "@/lib/utils"
-import styles from "./Navbar.module.css"
 
 const NAV_ITEMS = [
   { href: "/", label: "Home" },
@@ -17,19 +16,19 @@ export default function Navbar() {
   const pathname = usePathname()
 
   return (
-    <nav className={styles.nav}>
-      <Link href="/" className={styles.brand}>
+    <nav className="flex h-14 items-center justify-between bg-gray-900 px-6 text-white">
+      <Link href="/" className="text-lg font-bold text-white no-underline">
         {SITE_NAME}
       </Link>
 
-      <ul className={styles.links}>
+      <ul className="flex list-none gap-6">
         {NAV_ITEMS.map(({ href, label }) => (
           <li key={href}>
             <Link
               href={href}
               className={cn(
-                styles.link,
-                pathname === href && styles.linkActive,
+                "text-sm text-gray-400 no-underline transition-colors hover:text-white",
+                pathname === href && "font-semibold text-white",
               )}
             >
               {label}
