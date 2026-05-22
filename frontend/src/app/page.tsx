@@ -42,7 +42,7 @@ export default function Home() {
         <div className="flex flex-wrap justify-center gap-4">
           <Link
             href="/learn"
-            className="inline-block rounded bg-govuk-blue px-6 py-3 font-semibold text-white no-underline hover:brightness-110"
+            className="inline-block rounded border-2 border-transparent bg-govuk-blue px-6 py-3 font-semibold text-white no-underline hover:brightness-110"
           >
             Start Learning
           </Link>
