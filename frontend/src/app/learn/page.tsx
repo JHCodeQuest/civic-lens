@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import TermTooltip from "@/components/ui/TermTooltip"
 
 type Level = "beginner" | "intermediate" | "detailed"
 
@@ -18,14 +19,13 @@ const sections: { title: string; level: Level; content: React.JSX.Element }[] = 
       <>
         <p>
           The UK Parliament is the supreme legislative body of the United Kingdom. It is
-          bicameral, consisting of two chambers: the House of Commons (elected) and the
-          House of Lords (appointed). The monarch is the third component, granting Royal
-          Assent to bills.
+          <TermTooltip term="bicameral" definition="Having two chambers — the House of Commons and the House of Lords.">bicameral</TermTooltip>, consisting of two chambers: the House of Commons (elected) and the
+          House of Lords (appointed). The monarch is the third component, granting <TermTooltip term="Royal Assent" /> to bills.
         </p>
         <h3 className="mb-2 mt-6 text-lg font-semibold">House of Commons</h3>
         <p>
-          650 MPs are elected through the First Past the Post system, each representing a
-          constituency. The party with the most seats typically forms the government, with
+          650 MPs are elected through the <TermTooltip term="First Past the Post" /> system, each representing a
+          <TermTooltip term="constituency" definition="A geographical area represented by an MP in Parliament.">constituency</TermTooltip>. The party with the most seats typically forms the government, with
           its leader becoming Prime Minister.
         </p>
         <h3 className="mb-2 mt-6 text-lg font-semibold">House of Lords</h3>
@@ -44,13 +44,13 @@ const sections: { title: string; level: Level; content: React.JSX.Element }[] = 
       <>
         <p>
           General elections must be held at least every five years. The UK is divided into
-          650 constituencies, each electing one MP. Voters mark an X next to their preferred
-          candidate, and the candidate with the most votes wins (First Past the Post).
+          650 <TermTooltip term="constituency" definition="A geographical area represented by an MP in Parliament.">constituencies</TermTooltip>, each electing one MP. Voters mark an X next to their preferred
+          candidate, and the candidate with the most votes wins (<TermTooltip term="First Past the Post" />).
         </p>
         <p className="mt-4">
           After the election, the monarch invites the leader of the largest party to form a
-          government. If no party wins a majority, a hung parliament occurs, potentially
-          leading to a coalition or minority government.
+          government. If no party wins a majority, a <TermTooltip term="Hung Parliament" /> occurs, potentially
+          leading to a <TermTooltip term="Coalition Government">coalition</TermTooltip> or <TermTooltip term="Minority Government">minority government</TermTooltip>.
         </p>
       </>
     ),
@@ -64,7 +64,7 @@ const sections: { title: string; level: Level; content: React.JSX.Element }[] = 
           FPTP is the electoral system used for UK general elections. Key characteristics:
         </p>
         <ul className="mt-2 list-inside list-disc space-y-1 text-gray-700">
-          <li>Each voter has one vote in their local constituency</li>
+          <li>Each voter has one vote in their local <TermTooltip term="constituency" definition="A geographical area represented by an MP in Parliament.">constituency</TermTooltip></li>
           <li>The candidate with the most votes wins, regardless of vote share</li>
           <li>There is no requirement to win 50% or more of the vote</li>
           <li>Parties can win a majority of seats without a majority of votes nationally</li>
@@ -83,7 +83,7 @@ const sections: { title: string; level: Level; content: React.JSX.Element }[] = 
     content: (
       <>
         <p>
-          Since 1997, legislative powers have been devolved to Scotland, Wales, and
+          Since 1997, legislative powers have been <TermTooltip term="Devolution">devolved</TermTooltip> to Scotland, Wales, and
           Northern Ireland. Each nation has its own legislature and government handling
           domestic policy areas such as health, education, and transport.
         </p>
@@ -104,7 +104,7 @@ const sections: { title: string; level: Level; content: React.JSX.Element }[] = 
         <p className="mt-4">
           The UK Parliament at Westminster retains control over reserved matters: defence,
           foreign affairs, immigration, and overall economic policy. This is known as the
-          West Lothian Question — Scottish, Welsh, and NI MPs can vote on English-only
+          <TermTooltip term="West Lothian Question" definition="The constitutional anomaly where MPs from Scotland, Wales, and NI can vote on English-only matters but English MPs cannot vote on devolved matters.">West Lothian Question</TermTooltip> — Scottish, Welsh, and NI MPs can vote on English-only
           matters but not vice versa.
         </p>
       </>
@@ -121,7 +121,7 @@ const sections: { title: string; level: Level; content: React.JSX.Element }[] = 
         </p>
         <ul className="mt-2 list-inside list-disc space-y-1 text-gray-700">
           <li>Appointing the Prime Minister (the leader of the largest party)</li>
-          <li>Granting Royal Assent to bills (making them law)</li>
+          <li>Granting <TermTooltip term="Royal Assent" /> to bills (making them law)</li>
           <li>Opening and proroguing Parliament</li>
           <li>Serving as head of the armed forces and the Church of England</li>
         </ul>
@@ -161,7 +161,7 @@ const sections: { title: string; level: Level; content: React.JSX.Element }[] = 
             <strong>Lords Stages</strong> — The same process repeats in the House of Lords.
           </li>
           <li>
-            <strong>Royal Assent</strong> — The monarch formally approves the bill, making
+            <strong><TermTooltip term="Royal Assent" /></strong> — The monarch formally approves the bill, making
             it an Act of Parliament.
           </li>
         </ol>
@@ -184,7 +184,7 @@ export default function LearnPage() {
       <h1 className="mb-2 text-3xl font-bold">Learn About UK Politics</h1>
       <p className="mb-6 text-gray-600">
         An educational guide to how the UK political system works — from Parliament and
-        elections to devolution and law-making.
+        elections to <TermTooltip term="Devolution" /> and law-making.
       </p>
 
       <div className="mb-8 flex gap-2">
