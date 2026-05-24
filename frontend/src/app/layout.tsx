@@ -34,12 +34,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <p className="mb-2">&copy; {new Date().getFullYear()} Civic Lens</p>
           <p>
             {FOOTER_LINKS.map(({ href, label }, i) => (
-              <>
+              <span key={href}>
                 {i > 0 && <span className="mx-2">&middot;</span>}
-                <Link key={href} href={href} className="text-govuk-blue underline-offset-2 hover:underline">
+                <Link href={href} className="text-govuk-blue underline-offset-2 hover:underline">
                   {label}
                 </Link>
-              </>
+              </span>
             ))}
           </p>
         </footer>
