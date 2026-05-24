@@ -1,74 +1,106 @@
 export const glossary = [
   {
+    term: "Constituency",
+    definition: "A geographical area that elects one MP to Parliament. The UK is divided into 650 constituencies, each roughly equal in population.",
+  },
+  {
+    term: "Parliament",
+    definition: "The group of people who make and change laws in the UK. It has two parts: the House of Commons (elected MPs) and the House of Lords (appointed members).",
+  },
+  {
+    term: "MP (Member of Parliament)",
+    definition: "An elected representative who sits in the House of Commons and speaks for their constituency. There are 650 MPs in total.",
+  },
+  {
+    term: "House of Commons",
+    definition: "The elected chamber of Parliament where laws are debated and voted on. The party with the most MPs usually forms the government.",
+  },
+  {
+    term: "House of Lords",
+    definition: "The unelected chamber of Parliament that reviews and suggests changes to laws. Members are appointed, not voted for.",
+  },
+  {
+    term: "General Election",
+    definition: "A national vote where all 650 constituencies elect their MP. General elections happen at least every five years, and the winning party forms the government.",
+  },
+  {
+    term: "By-election",
+    definition: "A local election held in a single constituency when its MP resigns, dies, or is removed. Only that constituency votes.",
+  },
+  {
     term: "First Past the Post (FPTP)",
-    definition: "The electoral system used for UK general elections. The candidate with the most votes in each constituency wins, even if they don't secure a majority of votes cast.",
+    definition: "The voting system used in UK general elections. The candidate with the most votes in each constituency wins — you do not need more than half the votes.",
+  },
+  {
+    term: "Majority",
+    definition: "The difference in votes or seats between the winning candidate or party and the runner-up. A majority government holds more than half of all seats (at least 326).",
+  },
+  {
+    term: "Majority Government",
+    definition: "When one party wins more than half of all seats in Parliament, allowing it to pass laws without needing support from other parties.",
   },
   {
     term: "Hung Parliament",
-    definition: "When no single party wins a majority of seats (at least 326) in the House of Commons. This can lead to a coalition government or a minority government.",
+    definition: "When no single party wins more than half the seats. The largest party may form a coalition government or run as a minority government.",
   },
   {
-    term: "Coalition Government",
-    definition: "A government formed by two or more parties working together, usually because no single party won a majority of seats in a general election.",
+    term: "Coalition",
+    definition: "An agreement between two or more parties to share power and form a government together, usually because no single party won enough seats on its own.",
   },
   {
     term: "Minority Government",
-    definition: "A government formed by the largest party without a majority, relying on confidence-and-supply agreements or ad-hoc support from other parties to pass legislation.",
+    definition: "A government formed by the largest party even though it has fewer than half the seats. It relies on other parties to support each new law.",
+  },
+  {
+    term: "Manifesto",
+    definition: "A document published by a political party before an election, listing the promises and policies it will carry out if it wins.",
+  },
+  {
+    term: "Cabinet",
+    definition: "A group of senior ministers chosen by the Prime Minister to lead government departments. They meet regularly to make key decisions.",
+  },
+  {
+    term: "Prime Minister",
+    definition: "The head of the UK government, usually the leader of the party with the most MPs. They appoint ministers and set the government's direction.",
   },
   {
     term: "Whip",
-    definition: "A party official responsible for ensuring that MPs attend and vote according to the party line. The 'whip' also refers to the weekly instructions sent to MPs about upcoming votes.",
+    definition: "A party official who makes sure MPs attend votes and follow the party line. Breaking the whip can lead to losing the party's support.",
   },
   {
     term: "Backbencher",
-    definition: "An MP who does not hold a ministerial or shadow ministerial position and sits on the backbenches of the House of Commons.",
-  },
-  {
-    term: "Frontbencher",
-    definition: "An MP who holds a ministerial position in government or a shadow ministerial position in opposition, sitting on the front benches of the House of Commons.",
-  },
-  {
-    term: "Prime Minister's Questions (PMQs)",
-    definition: "A weekly session in the House of Commons where the Prime Minister answers questions from MPs. Typically held every Wednesday at midday.",
-  },
-  {
-    term: "King's Speech",
-    definition: "A speech delivered by the monarch at the State Opening of Parliament, outlining the government's legislative agenda for the upcoming session.",
-  },
-  {
-    term: "Select Committee",
-    definition: "A cross-party committee of MPs that scrutinises the work of a specific government department, examining policy, spending, and administration.",
-  },
-  {
-    term: "Public Bill",
-    definition: "A bill that proposes changes to the general law of the land, introduced by a government minister or a backbench MP.",
+    definition: "An MP who does not hold a government or opposition leadership role. They sit on the back benches and vote according to their party or conscience.",
   },
   {
     term: "Royal Assent",
-    definition: "The final stage of the legislative process where the monarch formally approves a bill, making it an Act of Parliament and part of law.",
+    definition: "The final step where the monarch formally approves a bill, turning it into law. This is a ceremonial step — no monarch has refused since 1708.",
   },
   {
     term: "Devolution",
-    definition: "The transfer of legislative powers from the UK Parliament to national parliaments and assemblies in Scotland, Wales, and Northern Ireland.",
+    definition: "The transfer of power from the UK Parliament to local parliaments and assemblies in Scotland, Wales, and Northern Ireland, allowing them to make their own laws on some issues.",
   },
   {
-    term: "Mandate",
-    definition: "The authority granted by voters to a party or government to implement its manifesto commitments after winning an election.",
+    term: "Referendum",
+    definition: "A nationwide vote on a single question. The result is not automatically binding but is usually followed by the government. Examples include the 2016 EU referendum and the 2014 Scottish independence referendum.",
   },
   {
     term: "Swing",
-    definition: "A measure of voter movement between parties. Calculated as the average of the percentage change in vote share for two parties (e.g., the swing from Conservative to Labour).",
+    definition: "A measure of how many voters moved from one party to another between elections. Often used to predict which seats might change hands.",
   },
   {
     term: "Marginal Seat",
-    definition: "A constituency where the winning candidate's majority is small, making it likely to change hands at the next election. Marginal seats are key targets for opposition parties.",
+    definition: "A constituency where the winning candidate won by a small margin, making it likely to switch to another party at the next election. These seats are heavily targeted during campaigns.",
   },
   {
     term: "Safe Seat",
-    definition: "A constituency where the winning party holds a large majority and is highly unlikely to lose at a general election.",
+    definition: "A constituency where one party always wins by a large margin, making it very unlikely to change hands at an election.",
   },
   {
-    term: "Recall Petition",
-    definition: "A mechanism allowing constituents to force a by-election if their MP is convicted of an offence or suspended from the House. Triggered when 10% of eligible voters sign.",
+    term: "King's Speech",
+    definition: "A speech read by the monarch at the opening of Parliament, setting out the government's plans for the coming year. The speech is written by the government, not the king.",
+  },
+  {
+    term: "Prime Minister's Questions (PMQs)",
+    definition: "A weekly session every Wednesday where the Prime Minister answers questions from MPs. It is the most watched event in Parliament.",
   },
 ]
