@@ -24,8 +24,8 @@ const whatItDoes = [
   },
   {
     title: "Understand Elections",
-    description: "Learn how general elections work, from constituencies to First Past the Post.",
-    href: "/learn",
+    description: "Learn how general elections work, from calling a vote to forming a government.",
+    href: "/elections",
   },
 ]
 
@@ -165,6 +165,10 @@ export default function Home() {
           <span className="mx-2">&middot;</span>
           <Link href="/about" className="text-govuk-blue underline-offset-2 hover:underline">
             About
+          </Link>
+          <span className="mx-2">&middot;</span>
+          <Link href="/elections" className="text-govuk-blue underline-offset-2 hover:underline">
+            Elections
           </Link>
         </p>
       </footer>
