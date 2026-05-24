@@ -5,6 +5,9 @@
   --color-govuk-yellow: #ffdd00;
   --color-govuk-black: #0b0c0c;
   --color-govuk-border: #b1b4b6;
+  --color-govuk-light-grey: #f3f2f1;
+  --color-govuk-dark-blue: #003078;
+  --color-govuk-secondary-text: #505a5f;
   --font-family-sans: "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
@@ -20,5 +23,11 @@ html {
 body {
   background: #fff;
   color: var(--color-govuk-black);
-  line-height: 1.5;
+  line-height: 1.6;
+}
+
+@media (min-width: 640px) {
+  body {
+    font-size: 1.125rem;
+  }
 }

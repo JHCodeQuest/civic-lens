@@ -13,17 +13,17 @@ export default function PartiesPage() {
     <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
       <PartyScroll />
       <h1 className="mb-2 text-3xl font-bold">UK Political Parties</h1>
-      <p className="mb-6 text-gray-600">
+      <p className="mb-6 text-govuk-secondary-text">
         An overview of the main political parties across the United Kingdom, including
         parties from Scotland, Wales, and Northern Ireland.
       </p>
 
-      <nav className="mb-8">
+      <nav className="mb-8 flex flex-wrap gap-x-4 gap-y-2">
         {grouped.map(({ region }) => (
           <a
             key={region}
             href={`#${region}`}
-            className="mr-4 text-sm text-govuk-blue hover:underline"
+            className="text-sm text-govuk-blue hover:underline"
           >
             {region}
           </a>

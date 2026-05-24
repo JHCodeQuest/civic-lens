@@ -64,7 +64,7 @@ const sections: { title: string; level: Level; content: React.JSX.Element }[] = 
         <p>
           FPTP is the electoral system used for UK general elections. Key characteristics:
         </p>
-        <ul className="mt-2 list-inside list-disc space-y-1 text-gray-700">
+        <ul className="mt-2 list-inside list-disc space-y-1 text-govuk-black">
           <li>Each voter has one vote in their local <TermTooltip term="constituency" definition="A geographical area represented by an MP in Parliament.">constituency</TermTooltip></li>
           <li>The candidate with the most votes wins, regardless of vote share</li>
           <li>There is no requirement to win 50% or more of the vote</li>
@@ -88,7 +88,7 @@ const sections: { title: string; level: Level; content: React.JSX.Element }[] = 
           Northern Ireland. Each nation has its own legislature and government handling
           domestic policy areas such as health, education, and transport.
         </p>
-        <ul className="mt-2 list-inside list-disc space-y-1 text-gray-700">
+        <ul className="mt-2 list-inside list-disc space-y-1 text-govuk-black">
           <li>
             <strong>Scottish Parliament</strong> — Holyrood, Edinburgh. Has wide-ranging
             powers including income tax rates and bands.
@@ -120,7 +120,7 @@ const sections: { title: string; level: Level; content: React.JSX.Element }[] = 
           The British monarch (currently King Charles III) is the head of state but
           exercises a largely ceremonial role. Key constitutional functions include:
         </p>
-        <ul className="mt-2 list-inside list-disc space-y-1 text-gray-700">
+        <ul className="mt-2 list-inside list-disc space-y-1 text-govuk-black">
           <li>Appointing the Prime Minister (the leader of the largest party)</li>
           <li>Granting <TermTooltip term="Royal Assent" /> to bills (making them law)</li>
           <li>Opening and proroguing Parliament</li>
@@ -142,7 +142,7 @@ const sections: { title: string; level: Level; content: React.JSX.Element }[] = 
         <p>
           A bill passes through several stages in both Houses before becoming law:
         </p>
-        <ol className="mt-2 list-inside list-decimal space-y-1 text-gray-700">
+        <ol className="mt-2 list-inside list-decimal space-y-1 text-govuk-black">
           <li>
             <strong>First Reading</strong> — The bill is introduced, no debate.
           </li>
@@ -184,7 +184,7 @@ export default function LearnPage() {
     <PlainEnglishProvider>
     <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8">
       <h1 className="mb-2 text-3xl font-bold">Learn About UK Politics</h1>
-      <p className="mb-6 text-gray-600">
+      <p className="mb-6 text-govuk-secondary-text">
         An educational guide to how the UK political system works — from Parliament and
         elections to <TermTooltip term="Devolution" /> and law-making.
       </p>
@@ -210,8 +210,8 @@ export default function LearnPage() {
       <div className="space-y-10">
         {visible.map(({ title, content }) => (
           <section key={title}>
-            <h2 className="mb-4 text-2xl font-bold text-gray-900">{title}</h2>
-            <div className="space-y-3 leading-relaxed text-gray-700">{content}</div>
+            <h2 className="mb-4 text-2xl font-bold text-govuk-black">{title}</h2>
+            <div className="space-y-3 leading-relaxed text-govuk-black">{content}</div>
           </section>
         ))}
       </div>

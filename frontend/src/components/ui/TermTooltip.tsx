@@ -62,7 +62,7 @@ export default function TermTooltip({ term, definition, children }: TermTooltipP
       {children ?? term}
       {show && (
         <span
-          className={`absolute bottom-full z-10 mb-2 w-64 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 shadow-lg ${positionClass}`}
+          className={`absolute bottom-full z-10 mb-2 w-64 rounded-lg border border-govuk-border bg-white px-3 py-2 text-sm text-govuk-black shadow-lg ${positionClass}`}
         >
           {resolved}
           <span

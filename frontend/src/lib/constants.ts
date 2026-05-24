@@ -13,4 +13,4 @@ export const PARTY_COLORS: Record<string, string> = {
   Alliance: "#F6CB2F",
 }
 
-export const SITE_NAME = "UK Politics App"
+export const SITE_NAME = "Civic Lens"

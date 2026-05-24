@@ -16,7 +16,7 @@ export default function GlossaryPage() {
   return (
     <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
       <h1 className="mb-2 text-3xl font-bold">Glossary of UK Political Terms</h1>
-      <p className="mb-6 text-gray-600">
+      <p className="mb-6 text-govuk-secondary-text">
         A reference guide to the key terms and concepts used in UK politics, from
         electoral systems to parliamentary procedure.
       </p>
@@ -33,7 +33,7 @@ export default function GlossaryPage() {
         {filtered.map(({ term, definition }) => (
           <GlossaryCard key={term} term={term} definition={definition} />
         ))}
-        {filtered.length === 0 && <p className="text-gray-500">No terms match your search.</p>}
+        {filtered.length === 0 && <p className="text-govuk-secondary-text">No terms match your search.</p>}
       </div>
     </main>
   )
