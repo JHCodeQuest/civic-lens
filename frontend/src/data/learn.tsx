@@ -6,12 +6,14 @@ export interface LearnTopic {
   id: string
   title: string
   content: ReactNode
+  searchText: string
 }
 
 export const learnTopics: LearnTopic[] = [
   {
     id: "what-is-parliament",
     title: "What is Parliament?",
+    searchText: "Parliament is the group of people who make and change laws for the United Kingdom. It has three parts: the House of Commons, the House of Lords, and the monarch. Parliament makes laws, debates issues, checks the work of government, and approves public spending.",
     content: (
       <>
         <p>
@@ -50,6 +52,7 @@ export const learnTopics: LearnTopic[] = [
   {
     id: "house-of-commons",
     title: "What is the House of Commons?",
+    searchText: "The House of Commons is the elected chamber of Parliament with 650 MPs who debate and vote on laws. The party with the most seats forms the government. PMQs happens every Wednesday. The Speaker keeps order during debates.",
     content: (
       <>
         <p>
@@ -80,6 +83,7 @@ export const learnTopics: LearnTopic[] = [
   {
     id: "house-of-lords",
     title: "What is the House of Lords?",
+    searchText: "The House of Lords is the unelected second chamber of Parliament that reviews laws passed by the Commons. Members are appointed as life peers, lords spiritual, or hereditary peers. They can amend and delay bills but cannot block them permanently.",
     content: (
       <>
         <p>
@@ -115,6 +119,7 @@ export const learnTopics: LearnTopic[] = [
   {
     id: "what-is-an-mp",
     title: "What does an MP do?",
+    searchText: "An MP is a Member of Parliament elected by voters in a constituency to represent them in the House of Commons. MPs debate and vote on laws, help local constituents with issues, hold the government to account, and serve on committees. Most belong to a political party and follow the whip.",
     content: (
       <>
         <p>
@@ -153,6 +158,7 @@ export const learnTopics: LearnTopic[] = [
   {
     id: "what-is-a-constituency",
     title: "What is a constituency?",
+    searchText: "A constituency is a local voting area that elects one MP to Parliament. There are 650 constituencies across the UK, each with roughly 70,000 to 80,000 voters. Types include safe seats and marginal seats. Boundaries are reviewed periodically by independent commissions.",
     content: (
       <>
         <p>
@@ -189,6 +195,7 @@ export const learnTopics: LearnTopic[] = [
   {
     id: "polling-and-opinion",
     title: "Polling and Opinion",
+    searchText: "Opinion polls measure how people intend to vote. Companies like YouGov, Ipsos, and Opinium survey representative samples. Polls have a margin of error around 3%. Trends matter more than individual polls. The polling page shows national figures and interactive charts.",
     content: (
       <>
         <p>
@@ -232,6 +239,7 @@ export const learnTopics: LearnTopic[] = [
   {
     id: "how-elections-work",
     title: "How do UK elections work?",
+    searchText: "General elections are held at least every five years. Voters choose their local MP using First Past the Post. The candidate with the most votes wins. The party with the most MPs forms the government. A majority government needs 326 or more seats. Hung parliaments can lead to coalitions or minority governments.",
     content: (
       <>
         <p>

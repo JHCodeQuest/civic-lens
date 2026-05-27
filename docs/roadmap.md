@@ -15,7 +15,7 @@
 - [x] Election history
 - [x] Party detail pages
 - [x] Backend API integration (polling and constituency pages live, data models in place)
-- [ ] Search across all pages
+- [x] Search across all pages
 
 ## Stage 3
 - [ ] Prediction engine

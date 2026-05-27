@@ -6,6 +6,7 @@ import { useState, useEffect, useRef, useCallback } from "react"
 import { SITE_NAME, NAV_ITEMS } from "@/lib/constants"
 import type { NavItem } from "@/lib/constants"
 import { cn } from "@/lib/utils"
+import SearchBar from "@/components/layout/SearchBar"
 
 interface NavbarProps {
   className?: string
@@ -136,7 +137,9 @@ export default function Navbar({ className, items = NAV_ITEMS }: NavbarProps) {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
+            <SearchBar />
+
             <button
               onClick={() => setDark(!dark)}
               className={cn(
@@ -218,6 +221,7 @@ export default function Navbar({ className, items = NAV_ITEMS }: NavbarProps) {
               "dark:border-govuk-border dark:bg-[#0b0c0c]",
             )}
           >
+            <SearchBar compact={false} />
             <nav aria-label="Mobile navigation">
               <ul className="flex list-none flex-col gap-1 px-4 pb-4 pt-2" role="list">
                 {items.map(({ href, label }) => {
