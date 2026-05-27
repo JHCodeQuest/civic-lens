@@ -11,10 +11,10 @@
 
 ## Stage 2
 - [x] Polling charts
-- [ ] Constituency explorer
+- [x] Constituency explorer
 - [ ] Election history
 - [ ] Party detail pages
-- [x] Backend API integration (polling page live, data model and services in place)
+- [x] Backend API integration (polling and constituency pages live, data models in place)
 - [ ] Search across all pages
 
 ## Stage 3
