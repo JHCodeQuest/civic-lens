@@ -5,7 +5,7 @@ export const PARTY_COLORS: Record<string, string> = {
   "Green Party": "#02A95B",
   SNP: "#FDF38E",
   "Plaid Cymru": "#008142",
-  ReformUK: "#12B6CF",
+  "Reform UK": "#12B6CF",
   DUP: "#D46A4C",
   SinnFéin: "#326760",
   SDLP: "#2AA82C",
@@ -25,6 +25,7 @@ export const NAV_ITEMS: NavItem[] = [
   { href: "/learn", label: "Learn" },
   { href: "/glossary", label: "Glossary" },
   { href: "/parties", label: "Parties" },
+  { href: "/polling", label: "Polling" },
   { href: "/elections", label: "Elections" },
   { href: "/about", label: "About" },
 ]

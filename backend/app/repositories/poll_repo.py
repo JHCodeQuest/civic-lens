@@ -1,6 +1,6 @@
 from datetime import date
 from sqlalchemy.orm import Session
-from sqlalchemy import select
+from sqlalchemy import select, func
 
 from app.models.poll import Poll
 from app.repositories.base import BaseRepository
@@ -28,15 +28,17 @@ class PollRepository(BaseRepository[Poll]):
         return self.db.execute(stmt).scalar_one_or_none()
 
     def get_latest_all_parties(self) -> list[Poll]:
-        subq = (
-            select(Poll.party_id, Poll.date.label("max_date"))
-            .distinct(Poll.party_id)
-            .order_by(Poll.party_id, Poll.date.desc())
+        max_dates = (
+            select(Poll.party_id, func.max(Poll.date).label("max_date"))
+            .group_by(Poll.party_id)
             .subquery()
         )
         stmt = (
             select(Poll)
-            .join(subq, (Poll.party_id == subq.c.party_id) & (Poll.date == subq.c.max_date))
+            .join(
+                max_dates,
+                (Poll.party_id == max_dates.c.party_id) & (Poll.date == max_dates.c.max_date),
+            )
             .order_by(Poll.percentage.desc())
         )
         return list(self.db.execute(stmt).scalars().all())

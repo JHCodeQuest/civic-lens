@@ -187,6 +187,49 @@ export const learnTopics: LearnTopic[] = [
     ),
   },
   {
+    id: "polling-and-opinion",
+    title: "Polling and Opinion",
+    content: (
+      <>
+        <p>
+          Opinion polls are surveys that measure how people intend to vote. Polling companies
+          like YouGov, Ipsos, and Opinium regularly ask a representative sample of the public
+          who they would vote for if there were a general election tomorrow.
+        </p>
+        <p>
+          Polls give a snapshot of public opinion, but they are not predictions. A poll with a
+          sample of 1,000 people typically has a margin of error of around 3%. This means the
+          true figure could be 3% higher or lower than what the poll reports.
+        </p>
+        <p>
+          Key things to understand about polling:
+        </p>
+        <ul className="list-inside list-disc space-y-1">
+          <li>
+            <strong>Sample size matters</strong> — larger samples give more reliable results
+          </li>
+          <li>
+            <strong>Different companies</strong> may show slightly different results due to methodology
+          </li>
+          <li>
+            <strong>Trends matter more</strong> than individual polls — look at changes over time
+          </li>
+          <li>
+            <strong>Don&apos;t knows</strong> are usually excluded from voting intention figures
+          </li>
+        </ul>
+        <p>
+          Our <a href="/polling" className="text-[#1d70b8] underline hover:text-[#003078] transition-colors">polling page</a> shows the latest national figures and how they have
+          changed over time, with interactive charts you can explore.
+        </p>
+        <p className="rounded-sm bg-govuk-light-grey p-3 text-sm dark:bg-white/5">
+          <strong>Remember:</strong> Polls are a useful guide, but they can get things wrong.
+          The 2015 and 2017 general elections both surprised the pollsters.
+        </p>
+      </>
+    ),
+  },
+  {
     id: "how-elections-work",
     title: "How do UK elections work?",
     content: (

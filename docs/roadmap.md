@@ -10,11 +10,11 @@
 - [x] GitHub Pages deployment
 
 ## Stage 2
-- [ ] Polling charts
+- [x] Polling charts
 - [ ] Constituency explorer
 - [ ] Election history
 - [ ] Party detail pages
-- [ ] Backend API integration
+- [x] Backend API integration (polling page live, data model and services in place)
 - [ ] Search across all pages
 
 ## Stage 3
