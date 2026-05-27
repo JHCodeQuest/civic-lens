@@ -1,0 +1,2 @@
+:HL["/_next/static/chunks/0c4~pti88_fke.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"constituencies","param":null,"prefetchHints":0,"slots":{"children":{"name":"id","param":{"type":"d","key":"dev-belfast-north","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"98XqSsuvAzaKRwmIKlEYV"}
