@@ -8,19 +8,55 @@ from app.models.poll import Poll
 from app.database.db import engine, Base, SessionLocal
 
 
-PARTIES_DATA = [
-    {"name": "Labour", "colour": "#DC241f", "abbreviation": "LAB", "leader": "Keir Starmer", "founded": 1900, "position": "Centre-left"},
-    {"name": "Conservative", "colour": "#0087DC", "abbreviation": "CON", "leader": "Rishi Sunak", "founded": 1834, "position": "Centre-right"},
-    {"name": "Liberal Democrat", "colour": "#FAA61A", "abbreviation": "LD", "leader": "Ed Davey", "founded": 1988, "position": "Centre"},
-    {"name": "Green Party", "colour": "#02A95B", "abbreviation": "GRN", "leader": "Carla Denyer & Adrian Ramsay", "founded": 1990, "position": "Left-wing"},
-    {"name": "SNP", "colour": "#FDF38E", "abbreviation": "SNP", "leader": "John Swinney", "founded": 1934, "position": "Centre-left"},
-    {"name": "Plaid Cymru", "colour": "#008142", "abbreviation": "PC", "leader": "Rhun ap Iorwerth", "founded": 1925, "position": "Centre-left"},
-    {"name": "Reform UK", "colour": "#12B6CF", "abbreviation": "REF", "leader": "Nigel Farage", "founded": 2018, "position": "Right-wing"},
-    {"name": "DUP", "colour": "#D46A4C", "abbreviation": "DUP", "leader": "Gavin Robinson", "founded": 1971, "position": "Right-wing"},
-    {"name": "Sinn Féin", "colour": "#326760", "abbreviation": "SF", "leader": "Mary Lou McDonald", "founded": 1905, "position": "Left-wing"},
-    {"name": "SDLP", "colour": "#2AA82C", "abbreviation": "SDLP", "leader": "Colum Eastwood", "founded": 1970, "position": "Centre-left"},
-    {"name": "UUP", "colour": "#48A5EE", "abbreviation": "UUP", "leader": "Doug Beattie", "founded": 1905, "position": "Centre-right"},
-    {"name": "Alliance", "colour": "#F6CB2F", "abbreviation": "APNI", "leader": "Naomi Long", "founded": 1970, "position": "Centre"},
+PARTIES_DATA: list[dict] = [
+    {"name": "Labour", "colour": "#DC241f", "colour_secondary": "#E87D7A", "abbreviation": "LAB", "leader": "Keir Starmer", "founded": 1900, "position": "Centre-left", "region": "England",
+     "description": "The Labour Party is a centre-left political party that emphasises public services, workers' rights, and social equality. Founded by trade unions and socialist societies, it has been one of the UK's two major parties since the early 20th century.",
+     "summary": "A centre-left party focused on public services, workers' rights, and social equality. Founded in 1900 by trade unions and socialist societies.",
+     "priorities": '["Economic growth and stability", "NHS investment and reform", "Green energy transition", "Workers\' rights and fair pay", "Housing and infrastructure"]'},
+    {"name": "Conservative", "colour": "#0087DC", "colour_secondary": "#66B2E8", "abbreviation": "CON", "leader": "Kemi Badenoch", "founded": 1834, "position": "Centre-right", "region": "England",
+     "description": "The Conservative and Unionist Party, commonly known as the Tories, is a centre-right party that emphasises lower taxes, free markets, and national sovereignty. It is the oldest political party in the UK and traditionally the party of the right.",
+     "summary": "A centre-right party emphasising lower taxes, free markets, and national sovereignty. The oldest political party in the UK, founded in 1834.",
+     "priorities": '["Lower taxes and deregulation", "Strong national defence", "Controlled immigration", "Brexit opportunities", "Education standards"]'},
+    {"name": "Liberal Democrat", "colour": "#FAA61A", "colour_secondary": "#FCCC6E", "abbreviation": "LD", "leader": "Ed Davey", "founded": 1988, "position": "Centre", "region": "England",
+     "description": "The Liberal Democrats are a centrist party that supports civil liberties, electoral reform, and environmental protection. Formed in 1988 from the merger of the Liberal Party and the Social Democratic Party.",
+     "summary": "A centrist party supporting civil liberties, electoral reform, and environmental protection. Formed in 1988 from the Liberal-SDP merger.",
+     "priorities": '["Electoral reform (proportional representation)", "Climate action", "Investment in health and social care", "Civil liberties protections", "Free childcare and education"]'},
+    {"name": "Green Party", "colour": "#02A95B", "colour_secondary": "#4DCB8A", "abbreviation": "GRN", "leader": "Carla Denyer & Adrian Ramsay", "founded": 1990, "position": "Left-wing", "region": "England",
+     "description": "The Green Party of England and Wales prioritises climate action, social justice, and grassroots democracy. It campaigns for a transition to an environmentally sustainable economy and public ownership of key services.",
+     "summary": "A left-wing party prioritising climate action, social justice, and grassroots democracy. Campaigns for an environmentally sustainable economy.",
+     "priorities": '["Net-zero carbon emissions by 2030", "Public ownership of key services", "Universal basic income", "Housing as a human right", "Renewable energy investment"]'},
+    {"name": "SNP", "colour": "#FDF38E", "colour_secondary": "#FEF8C4", "abbreviation": "SNP", "leader": "John Swinney", "founded": 1934, "position": "Centre-left", "region": "Scotland",
+     "description": "The Scottish National Party seeks Scottish independence and supports progressive policies on health, education, and social welfare. It has been the largest party in the Scottish Parliament since 2007 and dominates Scottish Westminster seats.",
+     "summary": "A centre-left party seeking Scottish independence. The largest party in Scotland since 2007, with a focus on health, education, and social welfare.",
+     "priorities": '["Scottish independence", "NHS and social care funding", "Child poverty reduction", "Free tuition and education", "Renewable energy leadership"]'},
+    {"name": "Plaid Cymru", "colour": "#008142", "colour_secondary": "#4DAA75", "abbreviation": "PC", "leader": "Rhun ap Iorwerth", "founded": 1925, "position": "Centre-left", "region": "Wales",
+     "description": "Plaid Cymru — the Party of Wales — seeks Welsh independence and supports protection of the Welsh language. It is strongest in Welsh-speaking areas of north and west Wales and advocates for fair funding for Wales.",
+     "summary": "A centre-left Welsh nationalist party seeking independence and protecting the Welsh language. Strongest in Welsh-speaking north and west Wales.",
+     "priorities": '["Welsh independence", "Welsh language preservation", "Fair funding for Wales", "Green jobs and energy", "Affordable housing"]'},
+    {"name": "Reform UK", "colour": "#12B6CF", "colour_secondary": "#6AD0E2", "abbreviation": "REF", "leader": "Nigel Farage", "founded": 2018, "position": "Right-wing", "region": "England",
+     "description": "Reform UK is a right-wing populist party that supports lower immigration, tax reductions, and changes to public institutions. Formed in 2018 from the Brexit Party, it advocates for significant reform of the UK political system.",
+     "summary": "A right-wing populist party supporting lower immigration, tax cuts, and institutional reform. Formed from the Brexit Party in 2018.",
+     "priorities": '["Immigration reduction", "Tax cuts and deregulation", "NHS reform", "House of Lords abolition", "Energy independence"]'},
+    {"name": "DUP", "colour": "#D46A4C", "colour_secondary": "#E49E89", "abbreviation": "DUP", "leader": "Gavin Robinson", "founded": 1971, "position": "Right-wing", "region": "Northern Ireland",
+     "description": "The Democratic Unionist Party is a unionist party that wants Northern Ireland to remain part of the UK. It emphasises traditional social values and is strongly Eurosceptic.",
+     "summary": "A right-wing unionist party committed to Northern Ireland remaining in the UK. Emphasises traditional social values and Euroscepticism.",
+     "priorities": '["Union with Great Britain", "Traditional social values", "Northern Ireland economy", "Opposition to the Northern Ireland Protocol", "Strong defence and security"]'},
+    {"name": "Sinn Féin", "colour": "#326760", "colour_secondary": "#6E9994", "abbreviation": "SF", "leader": "Mary Lou McDonald", "founded": 1905, "position": "Left-wing", "region": "Northern Ireland",
+     "description": "Sinn Féin is an Irish republican party that seeks a united Ireland. It follows a policy of abstentionism — its MPs do not take their seats in the UK Parliament. It is the largest nationalist party in Northern Ireland.",
+     "summary": "A left-wing Irish republican party seeking a united Ireland. Follows abstentionism — MPs do not take their Westminster seats.",
+     "priorities": '["Irish reunification", "Social housing investment", "Healthcare reform", "All-Ireland economy", "Irish language rights"]'},
+    {"name": "SDLP", "colour": "#2AA82C", "colour_secondary": "#6CC26D", "abbreviation": "SDLP", "leader": "Colum Eastwood", "founded": 1970, "position": "Centre-left", "region": "Northern Ireland",
+     "description": "The Social Democratic and Labour Party is an Irish nationalist party that pursues a united Ireland through constitutional and democratic means. It rejects abstentionism and fully participates in UK parliamentary democracy.",
+     "summary": "A centre-left Irish nationalist party pursuing a united Ireland through peaceful, constitutional means. Rejects abstentionism.",
+     "priorities": '["Irish reunification (peaceful)", "Good Friday Agreement", "Public services investment", "Cross-community cooperation", "Economic development"]'},
+    {"name": "UUP", "colour": "#48A5EE", "colour_secondary": "#82C1F3", "abbreviation": "UUP", "leader": "Mike Nesbitt", "founded": 1905, "position": "Centre-right", "region": "Northern Ireland",
+     "description": "The Ulster Unionist Party is a unionist party that wants Northern Ireland to remain in the UK. Historically the dominant unionist party, it operates within constitutional politics and supports power-sharing.",
+     "summary": "A centre-right unionist party supporting Northern Ireland in the UK. Historically dominant, it backs constitutional politics and power-sharing.",
+     "priorities": '["Union with Great Britain", "Power-sharing stability", "Economic development", "Health service reform", "Education investment"]'},
+    {"name": "Alliance", "colour": "#F6CB2F", "colour_secondary": "#F9DD70", "abbreviation": "APNI", "leader": "Naomi Long", "founded": 1970, "position": "Centre", "region": "Northern Ireland",
+     "description": "The Alliance Party of Northern Ireland is a cross-community party that defines itself as neither nationalist nor unionist. It supports shared governance and reconciliation, and has grown significantly in recent elections.",
+     "summary": "A centrist cross-community party in Northern Ireland, neither nationalist nor unionist. Supports shared governance and reconciliation.",
+     "priorities": '["Cross-community reconciliation", "Education investment", "Environmental sustainability", "Progressive social policies", "Economic reform"]'},
 ]
 
 GB_PARTIES = ["Labour", "Conservative", "Liberal Democrat", "Green Party", "SNP", "Plaid Cymru", "Reform UK"]
@@ -164,8 +200,6 @@ def _seed_constituencies(db: Session, rng: Random) -> dict[str, str]:
 def _seed_election_results(
     db: Session, party_map: dict[str, str], const_map: dict[str, str], rng: Random,
 ) -> None:
-    repo = type("Repo", (), {})()
-    repo.db = db
     from app.repositories.election_result_repo import ElectionResultRepository
     er_repo = ElectionResultRepository(db)
 
@@ -174,12 +208,14 @@ def _seed_election_results(
         return
 
     count = 0
+    shares_2019: dict[tuple[str, str], float] = {}
+
     for const_data in CONSTITUENCIES_DATA:
         const_id = const_map[const_data["name"]]
         profile = SEAT_PROFILES[const_data["type"]]
         total_electorate = rng.randint(65000, 85000)
 
-        for year, swing_mult in [(2024, 0), (2019, -1)]:
+        for year in (2019, 2024):
             parties_in_seat = [p for p, v in profile.items() if v > 0]
             raw_shares: dict[str, float] = {}
 
@@ -193,7 +229,6 @@ def _seed_election_results(
             total = sum(raw_shares.values())
             normalised = {p: round(v / total * 100, 1) for p, v in raw_shares.items()}
 
-            # Ensure sum = 100
             diff = 100.0 - sum(normalised.values())
             if diff != 0:
                 top = max(normalised, key=normalised.__getitem__)
@@ -204,11 +239,22 @@ def _seed_election_results(
             remaining = turnout_votes
 
             sorted_parties = sorted(normalised.items(), key=lambda x: -x[1])
+
+            if year == 2019:
+                for pname, share in sorted_parties:
+                    shares_2019[(const_id, party_map[pname])] = share
+
             for pos, (pname, share) in enumerate(sorted_parties, 1):
                 votes = int(turnout_votes * share / 100)
                 if pos == len(sorted_parties):
                     votes = remaining
                 remaining -= votes
+
+                change = None
+                if year == 2024:
+                    prev_share = shares_2019.get((const_id, party_map[pname]))
+                    if prev_share is not None:
+                        change = round(share - prev_share, 1)
 
                 er_repo.create(
                     constituency_id=const_id,
@@ -216,13 +262,12 @@ def _seed_election_results(
                     year=year,
                     votes=votes,
                     share=share,
-                    change=None,
+                    change=change,
                     position=pos,
                     source=DEV_SOURCE,
                 )
                 count += 1
 
-            # Register predictions for marginal seats in 2024
             if const_data["type"] == "marginal" and year == 2024:
                 winner_pname = sorted_parties[0][0]
                 runner_up = sorted_parties[1][0]

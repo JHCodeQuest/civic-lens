@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, Float
+from sqlalchemy import Column, String, Integer, Text
 from app.models.base import BaseModel
 
 
@@ -12,4 +12,7 @@ class Party(BaseModel):
     leader = Column(String(100), nullable=True)
     founded = Column(Integer, nullable=True)
     position = Column(String(50), nullable=True)
-    description = Column(String(500), nullable=True)
+    description = Column(Text, nullable=True)
+    summary = Column(Text, nullable=True)
+    region = Column(String(50), nullable=True)
+    priorities = Column(Text, nullable=True)

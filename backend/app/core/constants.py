@@ -5,7 +5,7 @@ PARTIES = {
     "Green Party": {"color": "#02A95B", "colour": "#02A95B"},
     "SNP": {"color": "#FDF38E", "colour": "#FDF38E"},
     "Plaid Cymru": {"color": "#008142", "colour": "#008142"},
-    "ReformUK": {"color": "#12B6CF", "colour": "#12B6CF"},
+    "Reform UK": {"color": "#12B6CF", "colour": "#12B6CF"},
 }
 
 REGIONS = [

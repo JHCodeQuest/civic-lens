@@ -3,7 +3,7 @@ export function cn(...classes: (string | false | undefined | null)[]): string {
 }
 
 export function slugify(s: string): string {
-  return s.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "")
+  return s.normalize("NFKD").replace(/[^\x00-\x7F]/g, "").toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "")
 }
 
 export function formatNumber(n: number): string {

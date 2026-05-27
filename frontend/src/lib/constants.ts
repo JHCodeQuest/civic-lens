@@ -7,7 +7,7 @@ export const PARTY_COLORS: Record<string, string> = {
   "Plaid Cymru": "#008142",
   "Reform UK": "#12B6CF",
   DUP: "#D46A4C",
-  SinnFéin: "#326760",
+  "Sinn Féin": "#326760",
   SDLP: "#2AA82C",
   UUP: "#48A5EE",
   Alliance: "#F6CB2F",

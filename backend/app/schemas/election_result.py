@@ -21,3 +21,27 @@ class ElectionResultResponse(BaseResponse, ElectionResultBase):
     constituency_name: str | None = None
     party_name: str | None = None
     party_colour: str | None = None
+
+
+class PartySummaryResponse(CamelCaseSchema):
+    party_name: str
+    party_colour: str | None = None
+    seats: int = 0
+    vote_share: float | None = None
+    change: float | None = None
+
+
+class NationalSummaryResponse(CamelCaseSchema):
+    year: int
+    total_seats: int
+    parties: list[PartySummaryResponse] = []
+    majority_party: str | None = None
+    majority_seats: int | None = None
+
+
+class RegionBreakdownResponse(CamelCaseSchema):
+    region: str
+    winning_party: str
+    winning_party_colour: str | None = None
+    seats: int
+    total_constituencies: int

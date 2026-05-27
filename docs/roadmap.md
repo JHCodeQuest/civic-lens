@@ -12,8 +12,8 @@
 ## Stage 2
 - [x] Polling charts
 - [x] Constituency explorer
-- [ ] Election history
-- [ ] Party detail pages
+- [x] Election history
+- [x] Party detail pages
 - [x] Backend API integration (polling and constituency pages live, data models in place)
 - [ ] Search across all pages
 

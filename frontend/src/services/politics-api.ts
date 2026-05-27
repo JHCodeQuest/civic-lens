@@ -1,6 +1,8 @@
 import { fetchFromApi } from "@/lib/api"
 import type { PollDataPoint } from "@/types/poll"
 import type { ConstituencyDetail, ElectionResultItem, PredictionResult } from "@/types/constituency"
+import type { NationalSummary, RegionSummary } from "@/types/election"
+import type { PartyHistoryItem, PartyConstituencyItem } from "@/types/party"
 
 export interface Constituency {
   id: string
@@ -49,4 +51,25 @@ export async function getPollingTrend(opts?: { start?: string; end?: string }): 
 
 export async function getLatestPolling(): Promise<PollDataPoint[]> {
   return fetchFromApi("/polling/latest")
+}
+
+export async function getElectionSummary(year: number): Promise<NationalSummary> {
+  return fetchFromApi(`/elections/${year}/summary`)
+}
+
+export async function getRegionBreakdown(year: number): Promise<RegionSummary[]> {
+  return fetchFromApi(`/elections/${year}/regions`)
+}
+
+export async function getPartyBySlug(slug: string): Promise<Party> {
+  return fetchFromApi(`/parties/by-slug/${slug}`)
+}
+
+export async function getPartyHistory(partyId: string): Promise<PartyHistoryItem[]> {
+  return fetchFromApi(`/parties/${partyId}/history`)
+}
+
+export async function getPartyConstituencies(partyId: string, year?: number): Promise<PartyConstituencyItem[]> {
+  const params = year ? `?year=${year}` : ""
+  return fetchFromApi(`/parties/${partyId}/constituencies${params}`)
 }
