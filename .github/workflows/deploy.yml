@@ -1,3 +1,18 @@
+# Deploys the frontend to GitHub Pages whenever frontend files change on main.
+#
+# How it works:
+#   1. Checks out the repo
+#   2. Installs Node dependencies (cached via npm)
+#   3. Builds the Next.js static export
+#   4. Uploads the output as a Pages artifact
+#   5. Deploys the artifact to GitHub Pages
+#
+# Required repo settings:
+#   Settings → Pages → Source: "GitHub Actions" (not a branch)
+#
+# Required secrets/variables:
+#   None — the workflow uses deploy-pages with OIDC token authentication.
+
 name: Deploy to GitHub Pages
 
 on:
@@ -5,6 +20,7 @@ on:
     branches: [main]
     paths:
       - "frontend/**"
+      - ".github/workflows/deploy.yml"
   workflow_dispatch:
 
 permissions:
@@ -22,20 +38,27 @@ jobs:
     defaults:
       run:
         working-directory: frontend
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build static export
         run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /civic-lens
 
-      - name: Upload artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: frontend/out

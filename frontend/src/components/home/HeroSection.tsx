@@ -6,11 +6,11 @@ export default function HeroSection() {
       <h1 className="mx-auto mb-4 max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
         Understanding UK Politics
       </h1>
-      <p className="mx-auto mb-3 max-w-2xl text-lg text-white/90 sm:text-xl">
+      <p className="mx-auto mb-3 max-w-2xl text-lg text-white/95 sm:text-xl">
         Helping people understand UK politics through simple explanations, data, and
         interactive tools.
       </p>
-      <p className="mx-auto mb-8 max-w-xl text-sm text-white/75">
+      <p className="mx-auto mb-8 max-w-xl text-sm text-white/85">
         Built for anyone who wants to cast an informed vote — no political science degree
         required.
       </p>

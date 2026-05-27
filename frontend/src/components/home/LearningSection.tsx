@@ -8,7 +8,7 @@ export default function LearningSection() {
         <p className="mb-4 text-lg leading-relaxed text-white/90">
           No jargon. No bias. Just clear explanations designed for beginners.
         </p>
-        <p className="mb-8 text-sm leading-relaxed text-white/75">
+        <p className="mb-8 text-sm leading-relaxed text-white/85">
           Our learning content is organised by reading level so you can start where you
           feel comfortable. Use the Plain English toggle to simplify complex terms, and
           hover over underlined words for instant definitions.

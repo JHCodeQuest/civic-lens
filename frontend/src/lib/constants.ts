@@ -14,3 +14,17 @@ export const PARTY_COLORS: Record<string, string> = {
 }
 
 export const SITE_NAME = "Civic Lens"
+
+export interface NavItem {
+  href: string
+  label: string
+}
+
+export const NAV_ITEMS: NavItem[] = [
+  { href: "/", label: "Home" },
+  { href: "/learn", label: "Learn" },
+  { href: "/glossary", label: "Glossary" },
+  { href: "/parties", label: "Parties" },
+  { href: "/elections", label: "Elections" },
+  { href: "/about", label: "About" },
+]
