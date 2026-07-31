@@ -27,6 +27,7 @@ export interface PartyHistoryItem {
 
 export interface PartyConstituencyItem {
   id: string
+  slug: string
   name: string
   region: string
   winner: boolean

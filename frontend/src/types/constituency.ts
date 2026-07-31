@@ -1,5 +1,7 @@
 export interface ConstituencySummary {
   id: string
+  /** Name-derived, stable across API and static data — used for routing. */
+  slug: string
   name: string
   region: string
   country: string | null
@@ -41,6 +43,7 @@ export interface PredictionResult {
 
 export interface DevConstituency {
   id: string
+  slug: string
   name: string
   region: string
   country: string

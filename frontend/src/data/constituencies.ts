@@ -1,4 +1,5 @@
 import type { DevConstituency, ElectionResultItem, PredictionResult } from "@/types/constituency"
+import { slugify } from "@/lib/utils"
 
 export const IS_DEV_DATA = true
 
@@ -56,7 +57,7 @@ function genResults(
   )
 }
 
-const MOCK_CONSTITUENCIES: DevConstituency[] = [
+const RAW_CONSTITUENCIES: Omit<DevConstituency, "slug">[] = [
   // East Midlands
   {
     id: "dev-leicester-south", name: "Leicester South", region: "East Midlands", country: "England", type: "labour",
@@ -309,10 +310,18 @@ const MOCK_CONSTITUENCIES: DevConstituency[] = [
   },
 ]
 
+// Slug is derived from the name using the same rule as the backend
+// (app/utils/helpers.py), so a constituency has one stable URL whether the
+// page is served from the API or from this static fallback.
+const MOCK_CONSTITUENCIES: DevConstituency[] = RAW_CONSTITUENCIES.map((c) => ({
+  ...c,
+  slug: slugify(c.name),
+}))
+
 export function getDevConstituencies(): DevConstituency[] {
   return MOCK_CONSTITUENCIES
 }
 
-export function getDevConstituency(id: string): DevConstituency | undefined {
-  return MOCK_CONSTITUENCIES.find((c) => c.id === id)
+export function getDevConstituency(idOrSlug: string): DevConstituency | undefined {
+  return MOCK_CONSTITUENCIES.find((c) => c.slug === idOrSlug || c.id === idOrSlug)
 }

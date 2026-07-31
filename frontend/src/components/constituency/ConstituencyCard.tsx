@@ -29,7 +29,7 @@ export default function ConstituencyCard({ constituency }: ConstituencyCardProps
 
   return (
     <Link
-      href={`/constituencies/${constituency.id}`}
+      href={`/constituencies/${constituency.slug}`}
       className="block bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 p-4 hover:border-[#1d70b8] hover:shadow-sm transition-all"
     >
       <div className="flex items-start gap-3">

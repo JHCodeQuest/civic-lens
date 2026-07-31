@@ -60,6 +60,7 @@ class PartyHistoryItem(CamelCaseSchema):
 
 class PartyConstituencyItem(CamelCaseSchema):
     id: str
+    slug: str
     name: str
     region: str
     winner: bool = True

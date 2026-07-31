@@ -12,5 +12,8 @@ build/
 *.ipynb_checkpoints/
 .vscode/
 .idea/
+.claude/
 *.db
 *.sqlite3
+*.tsbuildinfo
+.env.local

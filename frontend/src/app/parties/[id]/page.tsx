@@ -5,6 +5,8 @@ export function generateStaticParams() {
   return parties.map((p) => ({ id: p.slug }))
 }
 
-export default function PartyDetailPage({ params }: { params: { id: string } }) {
-  return <PartyDetailView slug={params.id} />
+// Next 16: `params` is a Promise and must be awaited before use.
+export default async function PartyDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  return <PartyDetailView slug={id} />
 }

@@ -1,15 +1,9 @@
-import re
-import unicodedata
 from sqlalchemy.orm import Session
 from sqlalchemy import select
 
 from app.models.party import Party
 from app.repositories.base import BaseRepository
-
-
-def _slugify(name: str) -> str:
-    normalized = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode("ascii")
-    return re.sub(r"[^a-z0-9-]", "", normalized.lower().replace(" ", "-"))
+from app.utils.helpers import slugify as _slugify
 
 
 class PartyRepository(BaseRepository[Party]):

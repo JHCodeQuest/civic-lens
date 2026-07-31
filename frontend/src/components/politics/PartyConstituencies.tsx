@@ -38,7 +38,7 @@ export default function PartyConstituencies({ constituencies }: PartyConstituenc
             {constituencies.map((c) => (
               <tr key={c.id} className="border-b border-gray-100 dark:border-gray-800 last:border-0">
                 <td className="py-2 pr-4">
-                  <Link href={`/constituencies/${c.id}`} className="text-govuk-blue hover:underline font-medium">
+                  <Link href={`/constituencies/${c.slug}`} className="text-govuk-blue hover:underline font-medium">
                     {c.name}
                   </Link>
                 </td>

@@ -3,12 +3,14 @@
 import { useState, useEffect, useCallback } from "react"
 import type { PollDataPoint } from "@/types/poll"
 import { getPollingTrend, getLatestPolling } from "@/services/politics-api"
+import { getDevPollingTrend, getDevLatestPolling, IS_DEV_DATA } from "@/data/polling"
 
 interface UsePollingDataResult {
   trendData: PollDataPoint[]
   latestData: PollDataPoint[]
   loading: boolean
   error: string | null
+  isDevData: boolean
   refetch: () => void
 }
 
@@ -29,31 +31,40 @@ export function usePollingData(
   const [latestData, setLatestData] = useState<PollDataPoint[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  // True only when the static fallback was actually used.
+  const [isDevData, setIsDevData] = useState(false)
 
-  const r = range || getDefaultRange()
+  const { start, end } = range || getDefaultRange()
 
   const fetch = useCallback(async () => {
     setLoading(true)
     setError(null)
     try {
       const [trend, latest] = await Promise.all([
-        getPollingTrend({ start: r.start, end: r.end }),
+        getPollingTrend({ start, end }),
         getLatestPolling(),
       ])
       setTrendData(trend)
       setLatestData(latest)
+      setIsDevData(false)
     } catch {
-      setError("Polling data unavailable. Start the backend API to see live data.")
-      setTrendData([])
-      setLatestData([])
+      if (IS_DEV_DATA) {
+        setTrendData(getDevPollingTrend({ start, end }))
+        setLatestData(getDevLatestPolling())
+        setIsDevData(true)
+      } else {
+        setError("Polling data unavailable. Start the backend API to see live data.")
+        setTrendData([])
+        setLatestData([])
+      }
     } finally {
       setLoading(false)
     }
-  }, [r.start, r.end])
+  }, [start, end])
 
   useEffect(() => {
     fetch()
   }, [fetch])
 
-  return { trendData, latestData, loading, error, refetch: fetch }
+  return { trendData, latestData, loading, error, isDevData, refetch: fetch }
 }
