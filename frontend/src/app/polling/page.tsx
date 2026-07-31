@@ -27,7 +27,7 @@ export default function PollingPage() {
   const [dateRange, setDateRange] = useState<"1M" | "3M" | "6M" | "ALL">("6M")
 
   const range = getDateRange(dateRange)
-  const { trendData, latestData, loading, error, refetch } = usePollingData(range ?? undefined)
+  const { trendData, latestData, loading, error, isDevData, refetch } = usePollingData(range ?? undefined)
 
   const allParties = useMemo(() => {
     const names = new Set<string>()
@@ -50,6 +50,13 @@ export default function PollingPage() {
             of public opinion, they have a margin of error and can vary between companies.
           </p>
         </section>
+
+        {/* DEV banner */}
+        {isDevData && !loading && (
+          <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg px-4 py-3 text-sm text-amber-800 dark:text-amber-300">
+            Polling data shown for demonstration purposes
+          </div>
+        )}
 
         {/* Loading */}
         {loading && (

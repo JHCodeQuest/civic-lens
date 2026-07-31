@@ -65,6 +65,7 @@ for (const p of parties) {
     const pc = getDevConstituencies().filter((c) => c.winner2024 === p.name)
     DEV_CONSTITUENCIES[slug] = pc.map((c) => ({
       id: c.id,
+      slug: c.slug,
       name: c.name,
       region: c.region,
       winner: true,

@@ -17,6 +17,9 @@ export function useConstituencyList(): UseConstituencyListResult {
   const [data, setData] = useState<ConstituencyDetail[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  // True only when the static fallback was actually used, so the "demo data"
+  // banner doesn't appear over live API results.
+  const [isDevData, setIsDevData] = useState(false)
 
   const fetch = useCallback(async () => {
     setLoading(true)
@@ -24,9 +27,11 @@ export function useConstituencyList(): UseConstituencyListResult {
     try {
       const result = await getConstituencies()
       setData(result)
+      setIsDevData(false)
     } catch {
       if (IS_DEV_DATA) {
         setData(getDevConstituencies() as unknown as ConstituencyDetail[])
+        setIsDevData(true)
       } else {
         setError("Unable to load constituency data")
         setData([])
@@ -38,7 +43,7 @@ export function useConstituencyList(): UseConstituencyListResult {
 
   useEffect(() => { fetch() }, [fetch])
 
-  return { data, loading, error, isDevData: IS_DEV_DATA, refetch: fetch }
+  return { data, loading, error, isDevData, refetch: fetch }
 }
 
 interface UseConstituencyDetailResult {
@@ -57,6 +62,7 @@ export function useConstituencyDetail(id: string): UseConstituencyDetailResult {
   const [prediction, setPrediction] = useState<PredictionResult | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [isDevData, setIsDevData] = useState(false)
 
   const fetch = useCallback(async () => {
     setLoading(true)
@@ -70,12 +76,14 @@ export function useConstituencyDetail(id: string): UseConstituencyDetailResult {
       setConstituency(c)
       setResults(r)
       setPrediction(p)
+      setIsDevData(false)
     } catch {
       if (IS_DEV_DATA) {
+        setIsDevData(true)
         const dev = getDevConstituency(id)
         if (dev) {
           setConstituency({
-            id: dev.id, name: dev.name, region: dev.region, country: dev.country,
+            id: dev.id, slug: dev.slug, name: dev.name, region: dev.region, country: dev.country,
             winner: dev.winner2024, winningPartyId: "", majority: dev.majority2024,
             electorate: null, createdAt: "", updatedAt: "",
           })
@@ -94,5 +102,5 @@ export function useConstituencyDetail(id: string): UseConstituencyDetailResult {
 
   useEffect(() => { fetch() }, [fetch])
 
-  return { constituency, results, prediction, loading, error, isDevData: IS_DEV_DATA, refetch: fetch }
+  return { constituency, results, prediction, loading, error, isDevData, refetch: fetch }
 }

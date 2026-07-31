@@ -8,6 +8,7 @@ from app.repositories.party_repo import PartyRepository
 from app.repositories.prediction_repo import PredictionRepository
 from app.schemas.constituency import ConstituencyResponse
 from app.schemas.election_result import ElectionResultResponse
+from app.utils.helpers import slugify
 
 router = APIRouter()
 
@@ -38,6 +39,24 @@ def list_constituencies(
     ]
 
 
+@router.get("/by-slug/{slug}", response_model=ConstituencyResponse)
+def get_constituency_by_slug(
+    slug: str,
+    year: int | None = Query(None, description="Election year for winner/majority data"),
+    db: Session = Depends(get_db),
+):
+    const_repo = ConstituencyRepository(db)
+    election_repo = ElectionResultRepository(db)
+    party_repo = PartyRepository(db)
+
+    c = const_repo.get_by_slug(slug)
+    if not c:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Constituency not found")
+
+    latest_year = year or _get_latest_year(election_repo)
+    return _enrich_constituency(c, election_repo, party_repo, latest_year)
+
+
 @router.get("/{constituency_id}", response_model=ConstituencyResponse)
 def get_constituency(
     constituency_id: str,
@@ -48,7 +67,8 @@ def get_constituency(
     election_repo = ElectionResultRepository(db)
     party_repo = PartyRepository(db)
 
-    c = const_repo.get_by_id(constituency_id)
+    # Accept either the UUID or the slug so existing links keep working.
+    c = const_repo.get_by_id(constituency_id) or const_repo.get_by_slug(constituency_id)
     if not c:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Constituency not found")
 
@@ -79,6 +99,7 @@ def _enrich_constituency(
 
     return ConstituencyResponse(
         id=c.id,
+        slug=slugify(c.name),
         name=c.name,
         region=c.region,
         country=c.country,
@@ -107,9 +128,11 @@ def get_constituency_results(
     party_repo = PartyRepository(db)
     const_repo = ConstituencyRepository(db)
 
-    const = const_repo.get_by_id(constituency_id)
+    const = const_repo.get_by_id(constituency_id) or const_repo.get_by_slug(constituency_id)
     if not const:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Constituency not found")
+
+    constituency_id = const.id
 
     if year:
         results = election_repo.get_by_constituency_and_year(constituency_id, year)
@@ -150,8 +173,14 @@ def get_constituency_prediction(
     db: Session = Depends(get_db),
 ):
     from app.services.prediction_service import PredictionService
+
+    const_repo = ConstituencyRepository(db)
+    const = const_repo.get_by_id(constituency_id) or const_repo.get_by_slug(constituency_id)
+    if not const:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Constituency not found")
+
     service = PredictionService(db)
-    pred = service.get_prediction_for_constituency(constituency_id)
+    pred = service.get_prediction_for_constituency(const.id)
     if not pred:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No prediction found")
     return pred

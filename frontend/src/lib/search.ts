@@ -55,7 +55,7 @@ function buildSearchIndex(): SearchItem[] {
       type: "constituency",
       title: c.name,
       description: `${c.region} — ${c.winner2024} hold`,
-      href: `/constituencies/${c.id}`,
+      href: `/constituencies/${c.slug}`,
       keywords: [c.name, c.region, c.country, c.winner2024, c.winner2019, c.type],
     })
   }

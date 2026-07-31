@@ -22,6 +22,8 @@ export function usePartyData(slug: string): UsePartyDataResult {
   const [constituencies, setConstituencies] = useState<PartyConstituencyItem[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  // True only when the static fallback was actually used.
+  const [isDevData, setIsDevData] = useState(false)
 
   const fetch = useCallback(async () => {
     setLoading(true)
@@ -41,6 +43,7 @@ export function usePartyData(slug: string): UsePartyDataResult {
       setParty(p as unknown as Party)
       setHistory(h)
       setConstituencies(c)
+      setIsDevData(false)
     } catch {
       if (IS_DEV_DATA) {
         const dev = getDevParty(slug)
@@ -48,6 +51,7 @@ export function usePartyData(slug: string): UsePartyDataResult {
           setParty(dev)
           setHistory(getDevPartyHistory(slug))
           setConstituencies(getDevPartyConstituencies(slug))
+          setIsDevData(true)
         } else {
           setError("Party not found")
         }
@@ -61,5 +65,5 @@ export function usePartyData(slug: string): UsePartyDataResult {
 
   useEffect(() => { fetch() }, [fetch])
 
-  return { party, history, constituencies, loading, error, isDevData: IS_DEV_DATA, refetch: fetch }
+  return { party, history, constituencies, loading, error, isDevData, refetch: fetch }
 }

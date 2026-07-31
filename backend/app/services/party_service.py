@@ -7,6 +7,7 @@ from app.models.constituency import Constituency
 from app.repositories.party_repo import PartyRepository
 from app.repositories.election_result_repo import ElectionResultRepository
 from app.schemas.party import PartyResponse, PartyCreate, PartyUpdate, PartyHistoryItem, PartyConstituencyItem
+from app.utils.helpers import slugify
 
 
 class PartyService:
@@ -113,6 +114,7 @@ class PartyService:
             majority = row.votes - runner_votes if row.votes else None
             result.append(PartyConstituencyItem(
                 id=row.id,
+                slug=slugify(row.name),
                 name=row.name,
                 region=row.region,
                 winner=True,
