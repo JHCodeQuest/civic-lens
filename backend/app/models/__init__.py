@@ -3,5 +3,15 @@ from app.models.constituency import Constituency
 from app.models.election_result import ElectionResult
 from app.models.prediction import Prediction
 from app.models.poll import Poll
+from app.models.position import PolicyArea, Statement, PartyStance
 
-__all__ = ["Party", "Constituency", "ElectionResult", "Prediction", "Poll"]
+__all__ = [
+    "Party",
+    "Constituency",
+    "ElectionResult",
+    "Prediction",
+    "Poll",
+    "PolicyArea",
+    "Statement",
+    "PartyStance",
+]
