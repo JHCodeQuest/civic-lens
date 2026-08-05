@@ -6,6 +6,11 @@ from app.schemas.election_result import (
 )
 from app.schemas.prediction import PredictionResponse, PredictionCreate
 from app.schemas.poll import PollResponse, PollCreate
+from app.schemas.position import (
+    PolicyAreaResponse, PolicyAreaCreate,
+    StatementResponse, StatementCreate,
+    PartyStanceResponse, PartyStanceCreate,
+)
 
 __all__ = [
     "PartyResponse", "PartyCreate", "PartyUpdate", "PartyHistoryItem", "PartyConstituencyItem",
@@ -14,4 +19,7 @@ __all__ = [
     "PartySummaryResponse", "NationalSummaryResponse", "RegionBreakdownResponse",
     "PredictionResponse", "PredictionCreate",
     "PollResponse", "PollCreate",
+    "PolicyAreaResponse", "PolicyAreaCreate",
+    "StatementResponse", "StatementCreate",
+    "PartyStanceResponse", "PartyStanceCreate",
 ]
